@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert New Pokemon</title>
+</head>
+<body>
+ <form th:object="${newMonster}" th:action="@{/update/{id}(id=${newMonster.id})}" method='POST'>
+ 
+ Name: <input name="name" size="20" th:field="*{name}"> <br />
+ Gender: <input name="gender" size="20" th:field="*{gender}"><br />
+ Color: <input name="color" size="20" th:field="*{color}"><br />
+ Type One: <input name="types.type1" size="20" th:field="*{types.type1}"><br />
+ Type Two: <input name="types.type2" size="20" th:field="*{types.type2}"><br />
+
+ <input name="submit"type="submit" value="submit"/>
+ 
+ </form>
+
+<a href="viewAll">View all Pokemon</a>
+</body>
+</html>

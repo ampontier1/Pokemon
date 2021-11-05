@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>View All Pokemon</title>
+</head>
+<body>
+<form>
+<table>
+<tr th:each="currentMonster : ${monsters}">
+ <td th:text="${currentMonster.id}" />
+ 	<td th:text="${currentMonster.name}" />
+ 	<td th:text="${currentMonster.gender}" />
+ 	<td th:text="${currentMonster.color}" />
+ 	<td th:text="${currentMonster.types.type1}" />
+ 	<td th:text="${currentMonster.types.type2}" />
+ 	<td><a th:href="@{/edit/{id}(id=${currentMonster.id})}">Edit</a></td>
+ 	<td><a th:href="@{/delete/{id}(id=${currentMonster.id})}">Delete</a></td>
+</tr>
+</table>
+</form>
+<a href="../inputMonster">Add a new Pokemon</a>
+</body>
+</html>
