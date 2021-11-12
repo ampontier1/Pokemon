@@ -3,9 +3,115 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert New Pokemon</title>
+	<script type="text/javascript">
+		function checkForm(form) {
+			var errors=[];
+			var re = /^[\w ]+$/;
+			
+			if(form.name.value == "") {
+				errors.push("Error: Input is empty!");
+				/*
+				alert("Error: Input is empty!");
+				form.name.focus();
+				return false;
+				*/
+			} else if(!re.test(form.name.value)) {
+				errors.push("Error: Input contains invalid characters!");
+				/*
+				alert("Error: Input contains invalid characters!");
+				form.name.focus();
+				return false;
+				*/
+			}
+			
+			if(form.gender.value == "") {
+				errors.push("Error: Input is empty!");
+				/*
+				alert("Error: Input is empty!");
+				form.gender.focus();
+				return false;
+				*/
+			}else if(!re.test(form.gender.value)) {
+				errors.push("Error: Input contains invalid characters!");
+				/*
+				alert("Error: Input contains invalid characters!");
+				form.gender.focus();
+				return false;
+				*/
+			}
+			
+			if(form.color.value == "") {
+				errors.push("Error: Input is empty!");
+				/*
+				alert("Error: Input is empty!");
+				form.color.focus();
+				return false;
+				*/
+			}else if(!re.test(form.color.value)) {
+				errors.push("Error: Input contains invalid characters!");
+				/*
+				alert("Error: Input contains invalid characters!");
+				form.color.focus();
+				return false;
+				*/
+			}
+			
+			if(form.types.type1.value == "") {
+				errors.push("Error: Input is empty!");
+				/*
+				alert("Error: Input is empty!");
+				form.types.type1.focus();
+				return false;
+				*/
+			}else if(!re.test(form.types.type1.value)) {
+				errors.push("Error: Input contains invalid characters!");
+				/*
+				alert("Error: Input contains invalid characters!");
+				form.types.type1.focus();
+				return false;
+				*/
+			}
+			
+			if(form.types.type2.value == "") {
+				errors.push("Error: Input is empty!");
+				/*
+				alert("Error: Input is empty!");
+				form.types.type2.focus();
+				return false;
+				*/
+			}else if(!re.test(form.types.type2.value)) {
+				errors.push("Error: Input contains invalid characters!");
+				/*
+				alert("Error: Input contains invalid characters!");
+				form.types.type2.focus();
+				return false;
+				*/
+			}
+			
+			if(form.types.type1.value == form.types.type2.value) {
+				error.push("Types cannot match!");
+				/*
+				alert("Types cannot match!");
+				form.types.type1.focus();
+				return false;
+				*/
+			}
+			
+			if (errors.length > 0) {
+				var msg = "Errors:\n\n";
+				for (var i=0; i<error.length; i++) {
+					msg+=errors[i] + "\n";
+				}
+				alert(msg);
+				return false;
+			}
+			
+			return true;
+		}
+	</script>
 </head>
 <body>
- <form th:object="${newMonster}" th:action="@{/update/{id}(id=${newMonster.id})}" method='POST'>
+ <form th:object="${newMonster}" th:action="@{/update/{id}(id=${newMonster.id})}" method='POST' th:onsubmit="return checkForm(this)">
  
  Name: <input name="name" size="20" th:field="*{name}"> <br />
  Gender: <input name="gender" size="20" th:field="*{gender}"><br />
